@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>File Upload</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			max-width: 600px;
+			margin: 50px auto;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 8px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.title {
+			text-align: center;
+			color: #333;
+		}
+
+		.form-group {
+			margin-bottom: 20px;
+		}
+
+		.file-label {
+			font-weight: bold;
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		input[type="file"] {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+
+		.upload-button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1 class="title">File Upload</h1>
+		<form id="uploadForm" enctype="multipart/form-data" method="post">
+			<div class="form-group">
+				<label class="file-label">Image file:</label>
+				<input type="file" name="imageFile" accept="image/*">
+			</div>
+			<button type="submit" class="upload-button" formaction="/upload/image">Upload Image</button>
+
+			<div class="form-group">
+				<label class="file-label">Audio file:</label>
+				<input type="file" name="audioFile" accept="audio/*">
+			</div>
+			<button type="submit" class="upload-button" formaction="/upload/audio">Upload Audio</button>
+
+			<div class="form-group">
+				<label class="file-label">Video file:</label>
+				<input type="file" name="videoFile" accept="video/*">
+			</div>
+			<button type="submit" class="upload-button" formaction="/upload/video">Upload Video</button>
+
+			<div class="form-group">
+				<label class="file-label">PDF file:</label>
+				<input type="file" name="pdfFile" accept=".pdf">
+			</div>
+			<button type="submit" class="upload-button" formaction="/upload/pdf">Upload PDF</button>
+
+			<div class="form-group">
+				<label class="file-label">WORD file:</label>
+				<input type="file" name="wordFile" accept=".doc, .docx">
+			</div>
+			<button type="submit" class="upload-button" formaction="/upload/word">Upload WORD</button>
+
+			<div class="form-group">
+				<label class="file-label">EXCEL file:</label>
+				<input type="file" name="excelFile" accept=".xls, .xlsx">
+			</div>
+			<button type="submit" class="upload-button" formaction="/upload/excel">Upload EXCEL</button>
+
+			<div class="form-group">
+				<label class="file-label">CSV file:</label>
+				<input type="file" name="csvFile" accept=".csv">
+			</div>
+			<button type="submit" class="upload-button" formaction="/upload/csv">Upload CSV</button>
+
+
+			<div class="form-group">
+				<label class="file-label">Any file:</label>
+				<input type="file" name="anyFile">
+			</div>
+			<button type="submit" class="upload-button" formaction="/upload/any">Upload File</button>
+		</form>
+	</div>
+</body>
+
+</html>

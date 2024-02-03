@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>All Files</title>
+	<!-- Add necessary CSS for icons (e.g., Font Awesome) -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<!-- Add custom CSS styles -->
+	<style>
+		.my {
+			text-align: center;
+			font-family: Arial, Helvetica, sans-serif;
+			color: green;
+		}
+
+		a+a {
+			margin-left: 20px;
+			/* Adjust the value as needed */
+		}
+	</style>
+</head>
+
+<body>
+	<h1 class="my">All Files</h1>
+
+	<!-- Iterate over files by type -->
+	<div class="file-section">
+
+		<div class="file-list">
+			<!-- Display PDF files -->
+			<ul>
+				<h2>Image Files</h2><br>
+				<li th:each="imageFile : ${filesByType['jpg']}">
+					<span class="file-icon image-icon"><i class="fas fa-images"></i></span>
+					<span th:text="${imageFile.name}"></span>
+					<a href="#" class="download-btn" th:href="@{'/download/' + ${imageFile.id}}">Download</a>
+					<a style="color:red" th:href="@{/deleteFile/{id}(id=${imageFile.id})}"><i
+							class="fas fa-trash"></i></a>
+				</li>
+				<br>
+				<hr>
+				<!-- PDF files -->
+				<h2>PDF Files</h2><br>
+				<li th:each="pdfFile : ${filesByType['pdf']}">
+					<span class="file-icon pdf-icon"><i class="fas fa-file-pdf"></i></span>
+					<span th:text="${pdfFile.name}"></span>
+					<a href="#" class="download-btn" th:href="@{'/download/' + ${pdfFile.id}}">Download</a>
+					<a style="color:red" th:href="@{/deleteFile/{id}(id=${pdfFile.id})}"><i
+							class="fas fa-trash"></i></a>
+				</li>
+				<br>
+				<hr>
+				<!-- Word files -->
+				<h2>Word Files</h2><br>
+				<li th:each="wordFile : ${filesByType['docx']}">
+					<span class="file-icon word-icon"><i class="fas fa-file-word"></i></span>
+					<span th:text="${wordFile.name}"></span>
+					<a href="#" class="download-btn" th:href="@{'/download/' + ${wordFile.id}}">Download</a>
+					<a style="color:red" th:href="@{/deleteFile/{id}(id=${wordFile.id})}"><i
+							class="fas fa-trash"></i></a>
+				</li>
+				<br>
+				<hr>
+				<!-- Excel files -->
+				<h2>Excel Files</h2><br>
+				<li th:each="excelFile : ${filesByType['xlsx']}">
+					<span class="file-icon excel-icon"><i class="fas fa-file-excel"></i></span>
+					<span th:text="${excelFile.name}"></span>
+					<a href="#" class="download-btn" th:href="@{'/download/' + ${excelFile.id}}">Download</a>
+					<a style="color:red" th:href="@{/deleteFile/{id}(id=${excelFile.id})}"><i
+							class="fas fa-trash"></i></a>
+				</li>
+				<br>
+				<hr>
+				<!-- CSV files -->
+				<h2>CSV Files</h2><br>
+				<li th:each="csvFile : ${filesByType['csv']}">
+					<span class="file-icon csv-icon"><i class="fas fa-file-csv"></i></span>
+					<span th:text="${csvFile.name}"></span>
+					<a href="#" class="download-btn" th:href="@{'/download/' + ${csvFile.id}}">Download</a>
+					<a style="color:red" th:href="@{/deleteFile/{id}(id=${csvFile.id})}"><i
+							class="fas fa-trash"></i></a>
+				</li>
+				<br>
+				<hr>
+				<!-- Audio files -->
+				<h2>Audio Files</h2><br>
+				<li th:each="audioFile : ${filesByType['mp3']}">
+					<span class="file-icon audio-icon"><i class="fas fa-file-audio"></i></span>
+					<span th:text="${audioFile.name}"></span>
+					<a href="#" class="download-btn" th:href="@{'/download/' + ${audioFile.id}}">Download</a>
+					<a style="color:red" th:href="@{/deleteFile/{id}(id=${audioFile.id})}"><i
+							class="fas fa-trash"></i></a>
+				</li>
+				<br>
+				<hr>
+				<!-- Video files -->
+				<h2>Video Files</h2><br>
+				<li th:each="videoFile : ${filesByType['mp4']}">
+					<span class="file-icon video-icon"><i class="fas fa-file-video"></i></span>
+					<span th:text="${videoFile.name}"></span>
+					<a href="#" class="download-btn" th:href="@{'/download/' + ${videoFile.id}}">Download</a>
+					<a style="color:red" th:href="@{/deleteFile/{id}(id=${videoFile.id})}"><i
+							class="fas fa-trash"></i></a>
+				</li>
+				<br>
+				<hr>
+				<!-- Other files -->
+				<h2>Other Files</h2><br>
+				<li th:each="otherFile : ${filesByType['other']}">
+					<span class="file-icon other-icon"><i class="fas fa-file"></i></span>
+					<span th:text="${otherFile.name}"></span>
+					<a href="#" class="download-btn" th:href="@{'/download/' + ${otherFile.id}}">Download</a>
+					<a style="color:red" th:href="@{/deleteFile/{id}(id=${otherFile.id})}"><i
+							class="fas fa-trash"></i></a>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+
+	<!-- Repeat the above structure for other file types (Word, Excel, etc.) -->
+
+	<!-- Add necessary JavaScript for handling file downloads -->
+	<script>
+		document.querySelectorAll('.download-btn').forEach(item => {
+			item.addEventListener('click', event => {
+				event.preventDefault();
+				// Get the download link from the 'href' attribute
+				const downloadLink = item.getAttribute('href');
+				// Trigger file download
+				window.location.href = downloadLink;
+			});
+		});
+	</script>
+</body>
+
+</html>
